@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6f-heads&tails</title>
+</head>
+<body>
+  <h1>Heads and Tails</h1>
+  <button onclick="
+  tossCoin('heads');">heads</button>
+
+  <button onclick="
+  tossCoin('tails');">tails</button>
+  <script>
+    let score = JSON.parse(localStorage.getItem('score')) || {
+      wins : 0,
+      losses : 0,
+    };
+    function tossCoin(x){
+      var r = Math.random()
+      var result = r<0.5?'heads':'tails';
+      result==x ? score.wins++ :  score.losses++;
+      localStorage.setItem('score',JSON.stringify(score))
+      alert(`Wins: ${score.wins} Losses: ${score.losses}`)
+    }
+  </script>
+</body>
+</html>
